@@ -1,26 +1,39 @@
-<script setup>
+<script>
     import SinglePostComponent from "@/components/SinglePostComponent.vue";
-    import {onMounted} from "vue";
+    //import {onMounted} from "vue";
+    //import { ref } from 'vue'
 
-    function getPosts() {
-        axios.get('/persons')
-            .then(res => {
-                this.persons = res.data;
-            })
+    export default {
+        name: "PostComponent",
+
+        data(){
+            return {
+                persons: null
+            }
+        },
+
+        mounted() {
+            this.getPersons()
+        },
+
+        methods: {
+            getPersons() {
+                axios.get('/persons')
+                    .then(res => {
+                        this.persons = res.data;
+                        console.log(this.persons);
+                        })
+                    .catch(error => {})
+                    .finally({})
+            }
+        }
     }
-
-    onMounted(function() {
-        getPosts();
-    })
 </script>
-
 
 
 <template>
     <div>
         Post component:
-        <div class="q">
-        </div>
         <br><br>
         <table class="table">
             <thead>
@@ -43,6 +56,7 @@
         <SinglePostComponent></SinglePostComponent>
     </div>
 </template>
+
 
 <style scoped>
 

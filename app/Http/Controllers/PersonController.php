@@ -11,25 +11,25 @@ class PersonController extends Controller
             [
                 'id' => 1,
                 'name' => 'Yury',
-                'age'=> '44',
+                'age' => 44,
                 'weight' => 80
             ],
             [
                 'id' => 2,
                 'name' => 'Denis',
-                'age'=> '48',
+                'age' => 48,
                 'weight' => 87
             ],
             [
                 'id' => 3,
                 'name' => 'Yulya',
-                'age'=> '41',
+                'age' => 41,
                 'weight' => 57
             ],
             [
                 'id' => 4,
                 'name' => 'Sergey',
-                'age'=> '21',
+                'age' => 21,
                 'weight' => 90
             ],
         ];
