@@ -1,7 +1,5 @@
 <script>
     import SinglePostComponent from "@/components/SinglePostComponent.vue";
-    //import {onMounted} from "vue";
-    //import { ref } from 'vue'
 
     export default {
         name: "PostComponent",
