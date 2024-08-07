@@ -93,7 +93,6 @@
                     <td><a href="#" @click.prevent="updatePerson(person.id)" class="btn btn-secondary">Update</a></td>
                 </tr>
             </template>
-
             </tbody>
         </table>
     </div>

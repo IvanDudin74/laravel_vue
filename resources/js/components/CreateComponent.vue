@@ -8,6 +8,11 @@ export default {
                 name: null,
                 age: null,
                 weight: null,
+                obj: {
+                    color: 'green',
+                    number: '2',
+                    isPublished: 'true',
+                }
             }
         },
 
@@ -29,8 +34,7 @@ export default {
 
         components: {
             SomeComponent
-        }
-
+        },
     }
 </script>
 
@@ -54,7 +58,7 @@ export default {
         <div  class="mb-3">
             <button @click.prevent="addPerson" class="form-control">Add</button>
         </div>
-        <some-component ref="some"></some-component>
+        <some-component ref="some" :obj="obj"></some-component>
     </div>
 </template>
 
