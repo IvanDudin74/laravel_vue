@@ -1,5 +1,6 @@
 <script>
-    export default {
+import SomeComponent from "@/components/SomeComponent.vue";
+export default {
         name: "CreateComponent",
 
         data(){
@@ -21,9 +22,15 @@
                         this.name = null
                         this.age = null
                         this.weight = null
+                        this.$parent.$refs.index.getPeople();
                     })
             }
         },
+
+        components: {
+            SomeComponent
+        }
+
     }
 </script>
 
@@ -47,6 +54,7 @@
         <div  class="mb-3">
             <button @click.prevent="addPerson" class="form-control">Add</button>
         </div>
+        <some-component ref="some"></some-component>
     </div>
 </template>
 

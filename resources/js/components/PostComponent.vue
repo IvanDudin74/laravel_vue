@@ -16,7 +16,7 @@
         methods: {
         },
 
-        components :{
+        components: {
             CreateComponent,
             IndexComponent
         }
@@ -28,8 +28,8 @@
     <div>
         Post component:
         <br><br>
-        <CreateComponent></CreateComponent>
-        <IndexComponent></IndexComponent>
+        <CreateComponent ref="create"></CreateComponent>
+        <IndexComponent ref="index"></IndexComponent>
     </div>
 </template>
 

@@ -41,7 +41,14 @@
                     .then(res => {
                         this.getPeople()
                     })
-            }
+            },
+
+            deletePerson(id) {
+                axios.delete(`/api/people/${id}`)
+                    .then(res => {
+                        this.getPeople()
+                    })
+            },
         }
     }
 </script>
@@ -58,7 +65,7 @@
                 <th scope="col">name</th>
                 <th scope="col">age</th>
                 <th scope="col">weight</th>
-                <th scope="col">action</th>
+                <th scope="col" colspan="2" class="text-center">actions</th>
             </tr>
             </thead>
             <tbody>
@@ -69,6 +76,7 @@
                     <td>{{ person.age }}</td>
                     <td>{{ person.weight }}</td>
                     <td><a href="#" @click.prevent="changeEditPersonId(person.id, person.name, person.age, person.weight)" class="btn btn-secondary">Edit</a></td>
+                    <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-secondary">Delete</a></td>
                 </tr>
                 <tr :class="isEdit(person.id) ? '' : 'd-none'">
                     <th scope="row">
