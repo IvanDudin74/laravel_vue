@@ -27,22 +27,16 @@ import EditComponent from "@/components/EditComponent.vue";
 
             changeEditPersonId(id, name, age, weight) {
                 this.editPersonId = id
-                this.$refs.edit.name = name
-                this.$refs.edit.age = age
-                this.$refs.edit.weight = weight
+                let editName = `edit_${id}`
+                let fullEditName = this.$refs[editName][0]
+                fullEditName.name = name
+                fullEditName.age = age
+                fullEditName.weight = weight
             },
 
             isEdit(id) {
                 return id === this.editPersonId
             },
-
-            /*updatePerson(id) {
-                this.editPersonId = null
-                axios.patch(`/api/people/${id}`, {name: this.name, age: this.age, weight: this.weight})
-                    .then(res => {
-                        this.getPeople()
-                    })
-            },*/
 
             deletePerson(id) {
                 axios.delete(`/api/people/${id}`)
@@ -83,7 +77,7 @@ import EditComponent from "@/components/EditComponent.vue";
                     <td><a href="#" @click.prevent="changeEditPersonId(person.id, person.name, person.age, person.weight)" class="btn btn-secondary">Edit</a></td>
                     <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-secondary">Delete</a></td>
                 </tr>
-                <Edit-component :person="person" ref="edit"></Edit-component>>
+                <Edit-component :person="person" :ref="`edit_${person.id}`"></Edit-component>
             </template>
             </tbody>
         </table>

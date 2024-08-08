@@ -2,6 +2,14 @@
     export default {
         name: "EditComponent",
 
+        data() {
+            return{
+                name: null,
+                age: null,
+                weight: null,
+            }
+        },
+
         mounted() {
         },
 
@@ -9,16 +17,16 @@
             updatePerson(id) {
                 this.$parent.editPersonId = null
                 axios.patch(`/api/people/${id}`,
-                    {name: this.$parent.name, age: this.$parent.age, weight: this.$parent.weight})
+                    {name: this.name, age: this.age, weight: this.weight})
                     .then(res => {
                         this.$parent.getPeople()
                     })
             },
+        },
 
-            props: [
-                'person'
-            ]
-        }
+        props: [
+            'person'
+        ]
     }
 </script>
 
@@ -28,13 +36,13 @@
         <th scope="row">
         </th>
         <td>
-            <input type="text" class="form-control" id="name" v-model="person.name" placeholder="name">
+            <input type="text" class="form-control" id="name" v-model="name" placeholder="name">
         </td>
         <td>
-            <input type="number" class="form-control" id="age" v-model="person.age" placeholder="age">
+            <input type="number" class="form-control" id="age" v-model="age" placeholder="age">
         </td>
         <td>
-            <input type="number" class="form-control" id="weight" v-model="person.weight" placeholder="weight">
+            <input type="number" class="form-control" id="weight" v-model="weight" placeholder="weight">
         </td>
         <td><a href="#" @click.prevent="updatePerson(person.id)" class="btn btn-secondary">Update</a></td>
     </tr>
