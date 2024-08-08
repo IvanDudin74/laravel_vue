@@ -1,4 +1,5 @@
 <script>
+import EditComponent from "@/components/EditComponent.vue";
     export default {
         name: "IndexComponent",
 
@@ -26,22 +27,22 @@
 
             changeEditPersonId(id, name, age, weight) {
                 this.editPersonId = id
-                this.name = name
-                this.age = age
-                this.weight = weight
+                this.$refs.edit.name = name
+                this.$refs.edit.age = age
+                this.$refs.edit.weight = weight
             },
 
             isEdit(id) {
                 return id === this.editPersonId
             },
 
-            updatePerson(id) {
+            /*updatePerson(id) {
                 this.editPersonId = null
                 axios.patch(`/api/people/${id}`, {name: this.name, age: this.age, weight: this.weight})
                     .then(res => {
                         this.getPeople()
                     })
-            },
+            },*/
 
             deletePerson(id) {
                 axios.delete(`/api/people/${id}`)
@@ -49,6 +50,10 @@
                         this.getPeople()
                     })
             },
+        },
+
+        components: {
+            EditComponent
         }
     }
 </script>
@@ -78,20 +83,7 @@
                     <td><a href="#" @click.prevent="changeEditPersonId(person.id, person.name, person.age, person.weight)" class="btn btn-secondary">Edit</a></td>
                     <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-secondary">Delete</a></td>
                 </tr>
-                <tr :class="isEdit(person.id) ? '' : 'd-none'">
-                    <th scope="row">
-                    </th>
-                    <td>
-                        <input type="text" class="form-control" id="name" v-model="name" placeholder="name">
-                    </td>
-                    <td>
-                        <input type="number" class="form-control" id="age" v-model="age" placeholder="age">
-                    </td>
-                    <td>
-                        <input type="number" class="form-control" id="weight" v-model="weight" placeholder="weight">
-                    </td>
-                    <td><a href="#" @click.prevent="updatePerson(person.id)" class="btn btn-secondary">Update</a></td>
-                </tr>
+                <Edit-component :person="person" ref="edit"></Edit-component>>
             </template>
             </tbody>
         </table>
