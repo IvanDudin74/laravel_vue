@@ -7,9 +7,6 @@ import EditComponent from "@/components/EditComponent.vue";
             return {
                 people: null,
                 editPersonId: null,
-                name: null,
-                age: null,
-                weight: null,
             }
         },
 

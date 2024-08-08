@@ -14,10 +14,14 @@
         },
 
         methods: {
+
             updatePerson(id) {
                 this.$parent.editPersonId = null
                 axios.patch(`/api/people/${id}`,
-                    {name: this.name, age: this.age, weight: this.weight})
+                    {name: this.name,
+                           age: this.age,
+                        weight: this.weight,
+                    })
                     .then(res => {
                         this.$parent.getPeople()
                     })
