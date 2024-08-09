@@ -1,5 +1,6 @@
 <script>
 import EditComponent from "@/components/EditComponent.vue";
+import ShowComponent from "@/components/ShowComponent.vue";
     export default {
         name: "IndexComponent",
 
@@ -22,28 +23,13 @@ import EditComponent from "@/components/EditComponent.vue";
                     })
             },
 
-            changeEditPersonId(id, name, age, weight) {
-                this.editPersonId = id
-                let editName = `edit_${id}`
-                let fullEditName = this.$refs[editName][0]
-                fullEditName.name = name
-                fullEditName.age = age
-                fullEditName.weight = weight
-            },
-
             isEdit(id) {
                 return id === this.editPersonId
-            },
-
-            deletePerson(id) {
-                axios.delete(`/api/people/${id}`)
-                    .then(res => {
-                        this.getPeople()
-                    })
             },
         },
 
         components: {
+            ShowComponent,
             EditComponent
         }
     }
@@ -66,14 +52,7 @@ import EditComponent from "@/components/EditComponent.vue";
             </thead>
             <tbody>
             <template v-for="person in people">
-                <tr :class="isEdit(person.id) ? 'd-none' : ''">
-                    <th scope="row">{{ person.id }}</th>
-                    <td>{{ person.name }}</td>
-                    <td>{{ person.age }}</td>
-                    <td>{{ person.weight }}</td>
-                    <td><a href="#" @click.prevent="changeEditPersonId(person.id, person.name, person.age, person.weight)" class="btn btn-secondary">Edit</a></td>
-                    <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-secondary">Delete</a></td>
-                </tr>
+                <ShowComponent :person="person"></ShowComponent>
                 <Edit-component :person="person" :ref="`edit_${person.id}`"></Edit-component>
             </template>
             </tbody>
