@@ -39,6 +39,7 @@
                 <th scope="col">name</th>
                 <th scope="col">age</th>
                 <th scope="col">weight</th>
+                <th scope="col">Edit</th>
             </tr>
             </thead>
             <tbody>
@@ -48,6 +49,11 @@
                     <td>{{ person.name }}</td>
                     <td>{{ person.age }}</td>
                     <td>{{ person.weight }}</td>
+                    <td>
+                        <router-link :to="{name: 'person.edit', params: {id: person.id}}">
+                            Edit
+                        </router-link>
+                    </td>
                 </tr>
                 <!--<Show :person="person"></Show>-->
             </template>

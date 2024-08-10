@@ -15,7 +15,7 @@
                 axios.patch('/api/people/' + this.$route.params.id,
                     {name: this.name, age: this.age, weight: this.weight})
                     .then(res => {
-                        this.$router.push({name: 'person.show'});
+                        this.$router.push({name: 'person.show', params: {id: this.$route.params.id}});
                     })
             },
 
