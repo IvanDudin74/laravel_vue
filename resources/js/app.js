@@ -2,21 +2,31 @@ import './bootstrap';
 import {createApp} from "vue";
 import * as VueRouter from "vue-router"
 import IndexComponent from "@/components/IndexComponent.vue";
-import PostComponent from "@/components/PostComponent.vue";
-import TagComponent from "@/components/TagComponent.vue";
+
 
 const routes = [
     {
-        path: '/',
-        component: IndexComponent,
+        path: '/people',
+        component: () => import('./components/Person/Index.vue'),
+        name: 'person.index',
     },
+
     {
-        path: '/posts',
-        component: PostComponent,
+        path: '/people/create',
+        component: () => import('./components/Person/Create.vue'),
+        name: 'person.create',
     },
+
     {
-        path: '/tags',
-        component: TagComponent,
+        path: '/people/edit',
+        component: () => import('./components/Person/Edit.vue'),
+        name: 'person.edit',
+    },
+
+    {
+        path: '/people/show',
+        component: () => import('./components/Person/Show.vue'),
+        name: 'person.show',
     },
 ]
 

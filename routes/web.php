@@ -22,5 +22,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::get('/', 'IndexController');
 Route::get('/{page}', 'IndexController')->where('page', ".*");
+
+
+/*Route::group(['namespace' => 'Person', 'prefix' => 'people'], function (){
+    Route::post('/', 'StoreController');
+    Route::get('/', 'IndexController');
+    Route::patch('/{person}', 'UpdateController');
+    Route::delete('/{person}', 'DestroyController');
+});*/
