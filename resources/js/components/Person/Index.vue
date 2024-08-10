@@ -1,7 +1,30 @@
 <script>
+
     export default {
-        name: "Index"
+
+        name: "Index",
+
+        data() {
+            return {
+                people: null,
+            }
+        },
+
+        methods: {
+            getPeople() {
+                axios.get('/api/people/')
+                    .then(res => {
+                        this.people = res.data
+                    })
+            }
+        },
+
+        mounted() {
+            this.getPeople();
+        },
     }
+
+
 </script>
 
 <template>
@@ -9,6 +32,27 @@
         <div>
             This is Person/Index component
         </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">name</th>
+                <th scope="col">age</th>
+                <th scope="col">weight</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template v-for="person in people">
+                <tr>
+                    <th scope="row">{{ person.id }}</th>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.weight }}</td>
+                </tr>
+                <!--<Show :person="person"></Show>-->
+            </template>
+            </tbody>
+        </table>
     </div>
 </template>
 

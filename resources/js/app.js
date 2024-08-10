@@ -17,7 +17,7 @@ const routes = [
     },
 
     {
-        path: '/people/edit',
+        path: '/people/:id/edit',
         component: () => import('./components/Person/Edit.vue'),
         name: 'person.edit',
     },

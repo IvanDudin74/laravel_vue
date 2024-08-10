@@ -1,6 +1,6 @@
 <script>
     export default {
-        name: "Show"
+        name: "Show",
     }
 </script>
 
@@ -8,6 +8,7 @@
     <div>
         This is Person/Show component
     </div>
+
 </template>
 
 <style scoped>
