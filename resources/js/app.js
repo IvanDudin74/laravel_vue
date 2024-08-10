@@ -3,7 +3,6 @@ import {createApp} from "vue";
 import * as VueRouter from "vue-router"
 import IndexComponent from "@/components/IndexComponent.vue";
 
-
 const routes = [
     {
         path: '/people',
