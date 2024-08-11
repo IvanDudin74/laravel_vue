@@ -13,14 +13,13 @@
                 axios.get('/api/people/' + this.$route.params.id)
                     .then(res => {
                         this.person = res.data.data
-                        console.log(res);
                     })
-            }
+            },
         },
 
         mounted() {
             this.getPerson()
-        }
+        },
     }
 </script>
 

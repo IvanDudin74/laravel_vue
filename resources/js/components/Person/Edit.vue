@@ -26,7 +26,7 @@
                         this.age = res.data.data.age
                         this.weight = res.data.data.weight
                     })
-            }
+            },
         },
 
         computed: {
@@ -37,8 +37,7 @@
 
         mounted() {
             this.getPerson()
-        }
-
+        },
     }
 </script>
 
