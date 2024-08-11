@@ -32,12 +32,12 @@ class UpdateRequest extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => 'This item is required',
+            /*'name.required' => 'This item is required',
             'name.string' => 'This item must be string type',
             'age.required' => 'This item is required',
             'age.integer' => 'This item must be integer type',
             'weight.required' => 'This item is required',
-            'weight.integer' => 'This item must be integer type',
+            'weight.integer' => 'This item must be integer type',*/
         ];
     }
 }

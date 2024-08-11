@@ -11,8 +11,8 @@
         },
 
         methods: {
-            update() {
-                axios.patch('/api/people/' + this.$route.params.id,
+            updatePerson() {
+                axios.patch(`/api/people/${this.$route.params.id}`,
                     {name: this.name, age: this.age, weight: this.weight})
                     .then(res => {
                         this.$router.push({name: 'person.show', params: {id: this.$route.params.id}});
@@ -20,12 +20,18 @@
             },
 
             getPerson() {
-                axios.get('/api/people/' + this.$route.params.id)
+                axios.get(`/api/people/${this.$route.params.id}`)
                     .then(res => {
-                        this.name = res.data.name
-                        this.age = res.data.age
-                        this.weight = res.data.weight
+                        this.name = res.data.data.name
+                        this.age = res.data.data.age
+                        this.weight = res.data.data.weight
                     })
+            }
+        },
+
+        computed: {
+            isDisabled() {
+                return !(this.name && this.age && this.weight)
             }
         },
 
@@ -50,7 +56,7 @@
         <div class="mb-3">
             <input type="number" class="form-control" id="weight" v-model="weight" placeholder="weight">
         </div>
-        <a @click.prevent="update()" href="#" class="btn btn-secondary">Update</a>
+        <input :disabled="isDisabled" @click.prevent="updatePerson()" class="btn btn-secondary" value="Update">
     </div>
 </template>
 

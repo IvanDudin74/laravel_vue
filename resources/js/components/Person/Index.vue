@@ -14,7 +14,14 @@
             getPeople() {
                 axios.get('/api/people/')
                     .then(res => {
-                        this.people = res.data
+                        this.people = res.data.data
+                    })
+            },
+
+            deletePerson(id){
+                axios.delete(`/api/people/${id}`)
+                    .then(res => {
+                        this.getPeople()
                     })
             }
         },
@@ -40,19 +47,40 @@
                 <th scope="col">age</th>
                 <th scope="col">weight</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
             <template v-for="person in people">
                 <tr>
-                    <th scope="row">{{ person.id }}</th>
-                    <td>{{ person.name }}</td>
-                    <td>{{ person.age }}</td>
-                    <td>{{ person.weight }}</td>
+                    <th scope="row">
+                        <router-link :to="{name: 'person.show', params: {id: person.id}}">
+                            {{ person.id }}
+                        </router-link>
+                    </th>
+                    <td>
+                        <router-link :to="{name: 'person.show', params: {id: person.id}}">
+                            {{ person.name }}
+                        </router-link>
+                    </td>
+                    <td>
+                        <router-link :to="{name: 'person.show', params: {id: person.id}}">
+                            {{ person.age }}
+                        </router-link>
+                    </td>
+                    <td>
+                        <router-link :to="{name: 'person.show', params: {id: person.id}}">
+                            {{ person.weight }}
+                        </router-link></td>
                     <td>
                         <router-link :to="{name: 'person.edit', params: {id: person.id}}">
                             Edit
                         </router-link>
+                    </td>
+                    <td>
+                        <a href="#" @click.prevent="deletePerson(person.id)">
+                            Delete
+                        </a>
                     </td>
                 </tr>
                 <!--<Show :person="person"></Show>-->

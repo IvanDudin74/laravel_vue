@@ -13,10 +13,17 @@
         methods: {
             store() {
                 axios.post('/api/people', {name: this.name, age: this.age, weight: this.weight})
-                    .then(res =>{
+                    .then(res => {
                         this.$router.push({name: 'person.index'});
                     })
             },
+
+        },
+
+        computed: {
+            isDisabled() {
+                return !(this.name && this.age && this.weight)
+            }
         }
     }
 </script>
@@ -34,7 +41,7 @@
         <div class="mb-3">
             <input type="number" class="form-control" id="weight" v-model="weight" placeholder="weight">
         </div>
-        <a @click.prevent="store()" href="#" class="btn btn-secondary">Add</a>
+        <input :disabled="isDisabled" @click.prevent="store()" class="btn btn-secondary" value="Add" id="send">
     </div>
 </template>
 

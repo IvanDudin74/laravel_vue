@@ -10,7 +10,7 @@ class StoreController extends Controller
 {
     public function __invoke(StoreRequest $request) {
         $data = $request->validated();
-        $person = Person::firstOrCreate($data);
-        return $person;
+        Person::firstOrCreate($data);
+        return response([]);
     }
 }

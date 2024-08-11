@@ -12,8 +12,8 @@
             getPerson() {
                 axios.get('/api/people/' + this.$route.params.id)
                     .then(res => {
-                        this.person = res.data
-                        console.log(this.person.id);
+                        this.person = res.data.data
+                        console.log(res);
                     })
             }
         },
