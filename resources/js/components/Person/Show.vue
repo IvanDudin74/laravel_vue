@@ -3,22 +3,29 @@
         name: "Show",
 
         data() {
-            return {
+            /*return {
                 person: null,
-            }
+            }*/
         },
 
         methods: {
-            getPerson() {
+            /*getPerson() {
                 axios.get('/api/people/' + this.$route.params.id)
                     .then(res => {
                         this.person = res.data.data
                     })
-            },
+            },*/
+        },
+
+        computed: {
+            person() {
+                this.person = this.$store.state.person
+            }
         },
 
         mounted() {
-            this.getPerson()
+            //this.$store.dispatch('getPerson', this.$route.params.id)
+            console.log(this.$store);
         },
     }
 </script>
@@ -30,15 +37,15 @@
             <tbody>
             <tr>
                 <th scope="col">Name:</th>
-                <td scope="col">{{ this.person.name }}</td>
+                <td scope="col">{{ person.name }}</td>
             </tr>
             <tr>
                 <th>Age:</th>
-                <td>{{ this.person.age }}</td>
+                <td>{{ person.age }}</td>
             </tr>
             <tr>
                 <th>Weight:</th>
-                <td>{{ this.person.weight }}</td>
+                <td>{{ person.weight }}</td>
             </tr>
             </tbody>
         </table>
