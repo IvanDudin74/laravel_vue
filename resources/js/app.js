@@ -1,10 +1,9 @@
 import './bootstrap';
-//import store from './store/'
-import Vuex, { createStore } from 'vuex'
+import store from './store'
 import {createApp} from "vue";
 import * as VueRouter from "vue-router"
 import IndexComponent from "@/components/IndexComponent.vue";
-import personModule from './store/modules/person'
+
 
 
 const routes = [
@@ -37,14 +36,6 @@ const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
     routes
 })
-
-const store = new Vuex.Store({
-    states: {},
-    mutations: {},
-    getters: {},
-    actions: {},
-})
-
 
 const app = createApp({})
 app.use(router)

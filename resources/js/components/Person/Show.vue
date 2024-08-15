@@ -1,38 +1,29 @@
 <script>
+    import person from "../../store/modules/person";
+
     export default {
         name: "Show",
 
-        data() {
-            /*return {
-                person: null,
-            }*/
-        },
-
         methods: {
-            /*getPerson() {
-                axios.get('/api/people/' + this.$route.params.id)
-                    .then(res => {
-                        this.person = res.data.data
-                    })
-            },*/
         },
 
         computed: {
             person() {
-                this.person = this.$store.state.person
+                return this.$store.getters.person
             }
         },
 
         mounted() {
-            //this.$store.dispatch('getPerson', this.$route.params.id)
-            console.log(this.$store);
+            this.$store.dispatch('getPerson', this.$route.params.id)
         },
     }
 </script>
 
 <template>
-    <div class="w-50" v-if="this.person">
-        This is Person/Show component
+    This is Person/Show component
+    <br>
+    <div class="w-50" v-if="person">
+
         <table class="table table-dark table-stripe">
             <tbody>
             <tr>
@@ -49,7 +40,7 @@
             </tr>
             </tbody>
         </table>
-        <router-link :to="{name: 'person.edit', params: {id: this.person.id}}">
+        <router-link :to="{name: 'person.edit', params: {id: person.id}}">
             Edit
         </router-link>
     </div>
