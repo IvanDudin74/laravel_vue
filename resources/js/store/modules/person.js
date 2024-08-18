@@ -27,7 +27,6 @@ const actions = {
             axios.get('/api/people/')
                 .then(res => {
                     commit('setPeople', res.data.data)
-                    //this.people = res.data.data
                 })
         },
 
