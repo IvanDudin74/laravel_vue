@@ -1,7 +1,9 @@
-
-
 const state = {
-    person: null,
+    person: {
+        name: null,
+        age: null,
+        weight: null,
+    },
     people: null,
 }
 
@@ -12,6 +14,10 @@ const getters = {
 
     people: state => {
         return state.people
+    },
+
+    isDisabled: state => {
+        return !(state.person.name && state.person.age && state.person.weight)
     }
 }
 
@@ -23,7 +29,7 @@ const actions = {
                 })
         },
 
-        getPeople({state, commit, dispatch}) {
+        getPeople({commit}) {
             axios.get('/api/people/')
                 .then(res => {
                     commit('setPeople', res.data.data)
@@ -41,14 +47,14 @@ const actions = {
             axios.patch(`/api/people/${data.id}`,
                 {name: data.name, age: data.age, weight: data.weight})
                 .then(res => {
-                    //this.$router.push({name: 'person.show', params: {id: this.$route.params.id}});
+                    //router.push({name: 'person.show', params: {id: data.id}});
                 })
         },
 
-        store({state, commit, dispatch}) {
-            axios.post('/api/people', {name: state.person.name, age: state.person.age, weight: state.person.weight})
+        store({}, data) {
+            axios.post('/api/people', {name: data.name, age: data.age, weight: data.weight})
                 .then(res => {
-                    //this.$router.push({name: 'person.index'});
+                    //router.push({name: 'person.index'});
                 })
         },
     }

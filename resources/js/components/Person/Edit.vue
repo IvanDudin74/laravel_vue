@@ -2,36 +2,10 @@
     export default {
         name: "Edit",
 
-        data() {
-            /*return {
-                name: null,
-                age: null,
-                weight: null,
-            }*/
-        },
-
-        methods: {
-            /*updatePerson() {
-                axios.patch(`/api/people/${this.$route.params.id}`,
-                    {name: this.name, age: this.age, weight: this.weight})
-                    .then(res => {
-                        this.$router.push({name: 'person.show', params: {id: this.$route.params.id}});
-                    })
-            },*/
-
-            /*getPerson() {
-                axios.get(`/api/people/${this.$route.params.id}`)
-                    .then(res => {
-                        this.name = res.data.data.name
-                        this.age = res.data.data.age
-                        this.weight = res.data.data.weight
-                    })
-            },*/
-        },
-
         computed: {
+
             isDisabled() {
-                return !(this.$store.getters.person.name && this.$store.getters.person.age && this.$store.getters.person.weight)
+                return this.$store.getters.isDisabled
             },
 
             person() {

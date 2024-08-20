@@ -4,9 +4,6 @@
 
         name: "Index",
 
-        methods: {
-        },
-
         mounted() {
             this.$store.dispatch('getPeople')
         },

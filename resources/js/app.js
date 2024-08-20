@@ -3,7 +3,7 @@ import store from './store'
 import {createApp} from "vue";
 import * as VueRouter from "vue-router"
 import IndexComponent from "@/components/IndexComponent.vue";
-
+//import router from "./router"
 
 
 const routes = [
@@ -32,6 +32,7 @@ const routes = [
     },
 ]
 
+
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
     routes
@@ -44,3 +45,6 @@ app.component("index-component", IndexComponent)
 app.mount('#app')
 
 
+export default {
+    router
+}

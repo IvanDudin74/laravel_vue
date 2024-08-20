@@ -4,9 +4,6 @@
     export default {
         name: "Show",
 
-        methods: {
-        },
-
         computed: {
             person() {
                 return this.$store.getters.person
