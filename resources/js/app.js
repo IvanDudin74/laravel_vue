@@ -1,6 +1,6 @@
 import './bootstrap';
-import store from './store'
 import {createApp} from "vue";
+import store from './store'
 import * as VueRouter from "vue-router"
 import IndexComponent from "@/components/IndexComponent.vue";
 //import router from "./router"
@@ -35,7 +35,7 @@ const routes = [
 
 const router = VueRouter.createRouter({
     history: VueRouter.createWebHistory(),
-    routes
+    routes,
 })
 
 const app = createApp({})

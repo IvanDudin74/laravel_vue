@@ -1,3 +1,5 @@
+import router from "../../app"
+
 const state = {
     person: {
         name: null,
