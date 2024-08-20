@@ -1,4 +1,4 @@
-import router from "../../app"
+import router from "../../router"
 
 const state = {
     person: {
@@ -49,14 +49,14 @@ const actions = {
             axios.patch(`/api/people/${data.id}`,
                 {name: data.name, age: data.age, weight: data.weight})
                 .then(res => {
-                    //router.push({name: 'person.show', params: {id: data.id}});
+                    router.push({name: 'person.show', params: {id: data.id}});
                 })
         },
 
         store({}, data) {
             axios.post('/api/people', {name: data.name, age: data.age, weight: data.weight})
                 .then(res => {
-                    //router.push({name: 'person.index'});
+                    router.push({name: 'person.index'});
                 })
         },
     }
